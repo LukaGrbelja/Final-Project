@@ -1,2 +1,3 @@
 # Final-Project
-Završni projekt
+
+Završni projekt - Izrada web foruma u React okruženju (o filmovima)
