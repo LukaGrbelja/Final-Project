@@ -1,7 +1,7 @@
 export default function Main() {
     return (
-        <div>
-            Movies and Series
+        <div className="row p-5">
+            Homes
         </div>
     );
 }
