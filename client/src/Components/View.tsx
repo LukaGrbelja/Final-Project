@@ -18,14 +18,16 @@ export default function View() {
                     </button>
                     <div className="navbar-collapse collapse" id="navbar">
                         <ul className="navbar-nav">
-                            <li className="nav-item">
+                            <li className="nav-item mt-2 p-2">
                                 <Link to="/main">Filmovi i serije</Link>
+                            </li>
+                            <li className="nav-item p-2">
+                                <UserLogIn></UserLogIn>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
-            <UserLogIn></UserLogIn>
             <hr />
             <div className="container">
                 <Outlet />
