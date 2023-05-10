@@ -1,6 +1,7 @@
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import { setCookies, getCookies } from "../Cookies";
+import { Link } from "react-router-dom";
 
 export default function Home() {
     const [moviesList, setList] = useState<any[]>([]);
@@ -10,7 +11,7 @@ export default function Home() {
 				setList(response.data);
 			});
 	},[]);
-    const putCookies = () => {
+    const putCookies = (): void => {
         setCookies(["tagOne","tagTwo"],["actorOne", "actorTwo"]);
         console.log(getCookies());
     }
@@ -31,7 +32,9 @@ export default function Home() {
                                 <img src="https://m.media-amazon.com/images/M/MV5BNjM0NTc0NzItM2FlYS00YzEwLWE0YmUtNTA2ZWIzODc2OTgxXkEyXkFqcGdeQXVyNTgwNzIyNzg@._V1_SX300.jpg" style={{height: "15rem", width: "10rem"}} className="card-img-top" alt="some text" />
                                 <div className="card-body mt-3">
                                     <h5 className="card-title">{movie.Title}</h5>
-                                    <a href="#" className="btn btn-primary">Go somewhere</a>
+                                    <Link to={`/content/movie/${movie.Id}`}>
+                                    <a className="btn btn-primary">Go somewhere</a>
+                                    </Link>
                                 </div>
                                 </div>
                             )
