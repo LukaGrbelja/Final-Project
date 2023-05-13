@@ -1,11 +1,12 @@
 import { useParams } from "react-router-dom";
 
 export default function Content() {
-    const type = useParams();
-    console.log(type);
+    const params = useParams();
     return (
-        <div className="row p-5">
-            C
+        <div className="row p-4 bg-dark">
+            <div className="col-sm-5">
+                <img src={""} style={{width: "-webkit-fill-available"}} alt="Nema slike"/>
+            </div>
         </div>
     );
 }

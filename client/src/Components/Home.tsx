@@ -2,11 +2,35 @@ import Axios from "axios";
 import { useEffect, useState } from "react";
 import { setCookies, getCookies } from "../Cookies";
 import { Link } from "react-router-dom";
+import { dataRequest } from "../@types/username";
 
 export default function Home() {
     const [moviesList, setList] = useState<any[]>([]);
     useEffect(() => {
-		Axios.get("http://localhost:3001/data")
+        let options: Array<dataRequest> = [
+            {
+                type: "cookies",
+                dataTypes: "movies",
+                data: []
+            },
+            {
+                type: "latest",
+                dataTypes: "movies",
+                data: {
+                    from: 0,
+                    to: 10
+                }
+            },
+            {
+                type: "rating",
+                dataTypes: "movies",
+                data: {
+                    from: 0,
+                    to: 10
+                }
+            }
+        ]
+		Axios.post("http://localhost:3001/data", options)
 			.then((response) => {
 				setList(response.data);
 			});
@@ -16,7 +40,6 @@ export default function Home() {
         console.log(getCookies());
     }
     return (
-        <>
             <div className="row p-4 bg-dark">
                 <div className="col-12 text-center mb-4">
                     <h2>Za vas</h2>
@@ -33,7 +56,7 @@ export default function Home() {
                                 <div className="card-body mt-3">
                                     <h5 className="card-title">{movie.Title}</h5>
                                     <Link to={`/content/movie/${movie.Id}`}>
-                                    <a className="btn btn-primary">Go somewhere</a>
+                                        <button className="btn btn-primary">Više informacija</button>
                                     </Link>
                                 </div>
                                 </div>
@@ -41,9 +64,7 @@ export default function Home() {
                         }
                     </div>
                     <h2>Najbolje ocijenjeni</h2>
-                    <h2>Najgledaniji</h2>
                 </div>
             </div>
-        </>
     );
 }
