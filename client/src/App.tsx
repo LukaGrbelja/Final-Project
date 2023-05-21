@@ -7,7 +7,7 @@ import Error from "./Components/Error";
 
 function App() {
 	return (
-		<div className="container-fluid" style={{backgroundColor: "black", height: "100%", color: "white"}}>
+		<div className="container-fluid" style={{backgroundColor: "black", height: "fit-content", color: "white"}}>
 			<Router>
 				<Routes>
 					<Route path="/" element={<View />}>

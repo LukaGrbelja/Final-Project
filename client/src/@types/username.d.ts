@@ -21,9 +21,15 @@ export type submitProcess = {
 }
 
 export type dataRequest = {
-    type: "cookies" | "latest" | "rating" | "comments";
+    type: "genre" | "latest" | "rating" | "comments";
     dataTypes: "movies" | "series";
-    data: Array<any> | {
+    data: {
+        from: number;
+        to: number;
+        data: Array<string>;
+    }
+    |
+    {
         from: number;
         to: number;
     };

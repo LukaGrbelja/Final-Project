@@ -1,17 +1,21 @@
 import Axios from "axios";
 import { useEffect, useState } from "react";
-import { setCookies, getCookies } from "../Cookies";
-import { Link } from "react-router-dom";
+import { cuntCookies } from "../Cookies";
 import { dataRequest } from "../@types/username";
+import MovieCard from "./MovieCard";
 
 export default function Home() {
-    const [moviesList, setList] = useState<any[]>([]);
+    const [moviesList, setList] = useState<Array<Array<any>>>([]);
     useEffect(() => {
         let options: Array<dataRequest> = [
             {
-                type: "cookies",
+                type: "genre",
                 dataTypes: "movies",
-                data: []
+                data: {
+                    from: 1,
+                    to: 10,
+                    data: cuntCookies()
+                }
             },
             {
                 type: "latest",
@@ -32,38 +36,57 @@ export default function Home() {
         ]
 		Axios.post("http://localhost:3001/data", options)
 			.then((response) => {
-				setList(response.data);
+                setList(response.data);
 			});
 	},[]);
-    const putCookies = (): void => {
-        setCookies(["tagOne","tagTwo"],["actorOne", "actorTwo"]);
-        console.log(getCookies());
-    }
     return (
             <div className="row p-4 bg-dark">
                 <div className="col-12 text-center mb-4">
                     <h2>Za vas</h2>
-                    <h2>Posljednje dodano</h2>
-                    <div style={{whiteSpace: "nowrap", height: "400px", overflow: "auto"}}>
+                    <div style={{whiteSpace: "nowrap", height: "620px", overflow: "auto"}}>
                         {
-                            moviesList.length === 0 ?
+                            moviesList.length !== 0 ?
+                            moviesList[0].length !== 0 ?
+                            moviesList[0].map(
+                                movie => 
+                                <MovieCard movie={movie} />
+                            )
+                            :
                             "Nema Ponuđenih Filmova"
                             :
-                            [...moviesList].reverse().map(
+                            "Nema Ponuđenih Filmova"
+                        }
+                    </div>
+                    <h2>Posljednje dodano</h2>
+                    <div style={{whiteSpace: "nowrap", height: "620px", overflow: "auto"}}>
+                        {
+                            moviesList.length !== 0 ?
+                            moviesList[1].length !== 0 ?
+                            moviesList[1].map(
                                 movie => 
-                                <div onClick={putCookies} style={{display: "inline-block", float: "none", width: "18rem"}}>
-                                <img src="https://m.media-amazon.com/images/M/MV5BNjM0NTc0NzItM2FlYS00YzEwLWE0YmUtNTA2ZWIzODc2OTgxXkEyXkFqcGdeQXVyNTgwNzIyNzg@._V1_SX300.jpg" style={{height: "15rem", width: "10rem"}} className="card-img-top" alt="some text" />
-                                <div className="card-body mt-3">
-                                    <h5 className="card-title">{movie.Title}</h5>
-                                    <Link to={`/content/movie/${movie.Id}`}>
-                                        <button className="btn btn-primary">Više informacija</button>
-                                    </Link>
-                                </div>
-                                </div>
+                                <MovieCard movie={movie} />
                             )
+                            :
+                            "Nema Ponuđenih Filmova"
+                            :
+                            "Nema Ponuđenih Filmova"
                         }
                     </div>
                     <h2>Najbolje ocijenjeni</h2>
+                    <div style={{whiteSpace: "nowrap", height: "620px", overflow: "auto"}}>
+                        {
+                            moviesList.length !== 0 ?
+                            moviesList[2].length !== 0 ?
+                            moviesList[2].map(
+                                movie => 
+                                <MovieCard movie={movie} />
+                            )
+                            :
+                            "Nema Ponuđenih Filmova"
+                            :
+                            "Nema Ponuđenih Filmova"
+                        }
+                    </div>
                 </div>
             </div>
     );
