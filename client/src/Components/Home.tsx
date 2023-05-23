@@ -49,7 +49,9 @@ export default function Home() {
                             moviesList[0].length !== 0 ?
                             moviesList[0].map(
                                 movie => 
+                                <div style={{ display: "inline-block", float: "none"}} key={movie._id}>
                                 <MovieCard movie={movie} />
+                                </div>
                             )
                             :
                             "Nema Ponuđenih Filmova"
@@ -64,7 +66,9 @@ export default function Home() {
                             moviesList[1].length !== 0 ?
                             moviesList[1].map(
                                 movie => 
+                                <div style={{ display: "inline-block", float: "none"}} key={movie._id}>
                                 <MovieCard movie={movie} />
+                                </div>
                             )
                             :
                             "Nema Ponuđenih Filmova"
@@ -79,7 +83,9 @@ export default function Home() {
                             moviesList[2].length !== 0 ?
                             moviesList[2].map(
                                 movie => 
+                                <div style={{ display: "inline-block", float: "none"}} key={movie._id}>
                                 <MovieCard movie={movie} />
+                                </div>
                             )
                             :
                             "Nema Ponuđenih Filmova"

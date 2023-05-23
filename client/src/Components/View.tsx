@@ -19,7 +19,10 @@ export default function View() {
                     <div className="navbar-collapse collapse" id="navbar">
                         <ul className="navbar-nav">
                             <li className="nav-item mt-2 p-2">
-                                <Link to="/main">Filmovi i serije</Link>
+                                <Link to="/main/movie">Filmovi</Link>
+                            </li>
+                            <li className="nav-item mt-2 p-2">
+                                <Link to="/main/series">Serije</Link>
                             </li>
                             <li className="nav-item p-2">
                                 <UserLogIn></UserLogIn>

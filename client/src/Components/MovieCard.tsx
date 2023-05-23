@@ -4,10 +4,9 @@ import { setCookies, getCookies } from "../Cookies";
 export default function MovieCard({movie}: any): JSX.Element {
     const putCookies = (): void => {
         setCookies(movie.Genre);
-        console.log(getCookies());
     }
     return (
-        <div className="card bg-dark border-primary me-3" onClick={putCookies} style={{ display: "inline-block", float: "none", width: "15rem", whiteSpace: "normal", verticalAlign: "top" }}>
+        <div className="card bg-dark border-primary me-3" onClick={putCookies} style={{ display: "inline-block", float: "none", width: "15rem", whiteSpace: "normal", verticalAlign: "top", textAlign: "center" }}>
             <img src={movie.Poster} style={{ height: "15rem", width: "10rem" }} className="card-img-top" alt="Nema ponudene slike" />
             <div className="card-body mt-3">
                 <h6 className="card-title" style={{ height: "2rem" }}>{movie.Title}</h6>
@@ -21,7 +20,7 @@ export default function MovieCard({movie}: any): JSX.Element {
                 <hr />
             </ul>
             <div className="card-body mt-3">
-                <Link to={`/content/movie/${movie.Id}`}>
+                <Link to={`/content/movie/${movie._id}`}>
                     <button className="btn btn-primary">Više informacija</button>
                 </Link>
             </div>
