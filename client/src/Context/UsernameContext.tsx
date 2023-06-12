@@ -1,5 +1,5 @@
 import { createContext, FC, useState } from "react";
-import { usernameContext, logInData, signUpData } from "../@types/username";
+import { usernameContext, logInData, signUpData } from "../@types/Types";
 
 export const UsernameContext = createContext<usernameContext>({UserName: null, LogUserName: () => {}});
 

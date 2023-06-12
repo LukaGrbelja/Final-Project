@@ -1,7 +1,7 @@
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import { cuntCookies } from "../Cookies";
-import { dataRequest } from "../@types/username";
+import { dataRequest } from "../@types/Types";
 import MovieCard from "./MovieCard";
 
 export default function Home() {
@@ -43,7 +43,7 @@ export default function Home() {
             <div className="row p-4 bg-dark">
                 <div className="col-12 text-center mb-4">
                     <h2>Za vas</h2>
-                    <div style={{whiteSpace: "nowrap", height: "620px", overflow: "auto"}}>
+                    <div style={{whiteSpace: "nowrap", height: "fit-content", overflow: "auto"}}>
                         {
                             moviesList.length !== 0 ?
                             moviesList[0].length !== 0 ?
@@ -54,9 +54,17 @@ export default function Home() {
                                 </div>
                             )
                             :
-                            "Nema Ponuđenih Filmova"
+                            <div className="card bg-dark border-primary m-5 p-5" style={{ minWidth: "400px"}}>
+                                <div className="card-body">
+                                    <h5 className="card-title">Nema Ponuđenih Filmova</h5>
+                                </div>
+                            </div>
                             :
-                            "Nema Ponuđenih Filmova"
+                            <div className="card bg-dark border-primary m-5 p-5" style={{ minWidth: "400px"}}>
+                                <div className="card-body m-5 p-5">
+                                    <h5 className="card-title">Nema Ponuđenih Filmova</h5>
+                                </div>
+                            </div>
                         }
                     </div>
                     <h2>Posljednje dodano</h2>

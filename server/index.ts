@@ -5,7 +5,8 @@ import bcryptjs from "bcryptjs";
 import UserModel from "./models/Users";
 import MovieModel from './models/Movies';
 import { passWord } from './personalData';
-import { dataRequest } from "../client/src/@types/username";
+import { dataRequest } from "../client/src/@types/Types";
+import ArticleModel from './models/News';
 
 const app: express.Application = express();
 
@@ -178,6 +179,14 @@ app.get("/contentData/:type/:genre/:sort/:page", (req, res) => {
             });
         }
     }
+});
+
+app.get("/newsData/:page", (req, res) => {
+    const { page } = req.params;
+    const [from, to] = [(parseInt(page) - 1) * 5, parseInt(page) * 5];
+    ArticleModel.find({}).sort({Date: -1}).skip(from).limit(to).then(resp => {
+        res.send(resp);
+    });
 });
 
 app.listen(3001, () => {

@@ -24,6 +24,9 @@ export default function View() {
                             <li className="nav-item mt-2 p-2">
                                 <Link to="/main/series">Serije</Link>
                             </li>
+                            <li className="nav-item mt-2 p-2">
+                                <Link to="/news">Novosti</Link>
+                            </li>
                             <li className="nav-item p-2">
                                 <UserLogIn></UserLogIn>
                             </li>

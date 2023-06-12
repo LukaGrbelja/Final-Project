@@ -15,29 +15,37 @@ export default function Content() {
             {
                 data ? 
                 <>
-                <div className="col-sm-5">
-                    <img src={data.Poster} style={{width: "-webkit-fill-available"}} alt="Nema slike"/>
+                <div className="col-md-6">
+                    <img src={data.Poster} className="img-fluid rounded" alt="Nema slike" />
                 </div>
-                <div className="col-sm-7 p-4">
+                <div className="col-md-6">
                     <h1 className="mb-4">{data.Title}</h1>
                     <h5>{data.Plot}</h5>
-                    <a href={`https://www.imdb.com/title/${data.imdbID}`} style={{textDecoration: "none"}}>
-                        <div className="d-grid gap-2 col-6 mx-auto">
+                    <div className="mt-4">
+                        <a href={`https://www.imdb.com/title/${data.imdbID}`} className="text-decoration-none">
                             <button type="button" className="btn btn-warning btn-lg">IMDb</button>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
+                    <div className="mt-4">
+                        <h3>Detalji o filmu:</h3>
+                        <ul className="list-group bg-dark mt-4">
+                            <span><strong>Godina:</strong> {data.Year}</span>
+                            <hr />
+                            <span><strong>Datum izlaska:</strong> {data.Released}</span>
+                            <hr />
+                            <span><strong>Trajanje:</strong> {data.Runtime}</span>
+                            <hr />
+                            <span><strong>Žanrovi:</strong> {data.Genre}</span>
+                            <hr />
+                            <span><strong>Direktor:</strong> {data.Director}</span>
+                            <hr />
+                            <span><strong>Glumci:</strong> {data.Actors}</span>
+                            <hr />
+                            <span><strong>IMDb ocjena:</strong> {data.imdbRating}</span>
+                            <hr />
+                        </ul>
+                    </div>
                 </div>
-                <p>
-                    <h3>Žanrovi: {data.Genre}</h3>
-                    <h3>Glumci: {data.Actors}</h3>
-                    Direktor: {data.Director}<br/>
-                    Duljina filma: {data.Runtime}<br/>
-                    Datum izlaska: {data.Released}<br/>
-                    Država: {data.Country}<br/>
-                    Jezik: {data.Language}<br/>
-                    Zarada: {data.BoxOffice}<br/>
-                    IMDb ocjena: {data.imdbRating}<br/>
-                    Opis: {data.Plot}</p>
                 </>
                 : <p>loading</p>
                 }

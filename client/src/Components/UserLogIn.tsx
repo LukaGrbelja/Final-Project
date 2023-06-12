@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import axios from "axios";
 import { UsernameContext } from "../Context/UsernameContext";
-import { usernameContext, logInData, signUpData, submitProcess } from "../@types/username";
+import { usernameContext, logInData, signUpData, submitProcess } from "../@types/Types";
 
 export default function UserLogIn(): JSX.Element {
     const user: usernameContext = useContext(UsernameContext);
@@ -98,7 +98,7 @@ export default function UserLogIn(): JSX.Element {
                 :
                 <>
                     <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Ulogiraj se
+                        Prijavi se
                     </button>
                     <div className="modal fade" id="exampleModal" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog">
